@@ -2,9 +2,6 @@ from pprint import pprint
 from dataset import contacts_list
 
 
-
-
-
 # class PhoneBook:
 #
 #     def show_contacts(self):
@@ -24,13 +21,13 @@ from dataset import contacts_list
 
 
 class Contact:
-    def __init__(self, first_name, second_name, phone_number, *w, **Extra_info):
-        self.first_name = first_name,
-        self.second_name = second_name,
-        self.phone_number = phone_number,
-        self.is_favourite = 'нет'
+    def __init__(self, first_name, second_name, phone_number=str, is_favourite='нет', **Extra_info):
+        self.first_name = first_name
+        self.second_name = second_name
+        self.phone_number = phone_number
+        self.is_favourite = is_favourite
         # self.email = email,
-        self.Extra_info = Extra_info,
+        self.Extra_info = Extra_info
 
         contacts_list.append(self.__dict__)
 
@@ -41,12 +38,14 @@ class Contact:
         self.is_favourite = 'нет'
 
     def __str__(self):
-        return print(f'Имя: {self.first_name}',\
-               f'Фамилия: {self.second_name},' \
-               f'Телефон: {self.phone_number},' \
-               f'В избранных: {self.is_favourite},' \
-               f'Дополнительная информация: {self.Extra_info}')
-
+        return f'Имя: {self.first_name}\n' \
+               f'Фамилия: {self.second_name}\n' \
+               f'Телефон: {self.phone_number}\n' \
+               f'В избранных: {self.is_favourite}\n' \
+               f'Дополнительная информация: \n\t' \
+               f'e-mail: {self.Extra_info["email"]}\n\t' \
+               f'telegram: {self.Extra_info["telegram"]}\n\t' \
+               f'facebook: {self.Extra_info["facebook"]}'
 
 
 Vasyan = Contact(
@@ -59,11 +58,4 @@ Vasyan = Contact(
 )
 Vasyan.add_to_favourite()
 
-# pprint(Vasyan.__dict__)
-# print()
-# print()
-# pprint(contacts_list)
-
-# PhoneBook.show_contacts(contacts_list)
-
-str(Vasyan)
+print(Vasyan)
