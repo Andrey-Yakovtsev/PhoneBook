@@ -67,15 +67,24 @@ class PhoneBook:
             if item.first_name == first_name and item.second_name == second_name:
                 print(item.phone_number)
 
-MyTopContacts = PhoneBook('Моя телефонная книга')
-MyTopContacts.add_new_contact(Petka)
-MyTopContacts.add_new_contact(Vasyan)
+    def delete_conatact(self, phone_number):
+        for item in self.contacts_list:
+            if item.phone_number == phone_number:
+                self.contacts_list.remove(item)
+
+mytopcontacts = PhoneBook('Моя телефонная книга')
+mytopcontacts.add_new_contact(Petka)
+mytopcontacts.add_new_contact(Vasyan)
 print()
 print('Here are all contacts:')
-MyTopContacts.show_contacts()
+mytopcontacts.show_contacts()
 print()
 print('Here are favs:')
-MyTopContacts.show_favourites()
+mytopcontacts.show_favourites()
 print()
 print('Here is finder:')
-MyTopContacts.find_contact('Пятый', 'Петька')
+mytopcontacts.find_contact('Пятый', 'Петька')
+print()
+print('Deleter worked. Now it is only one left:')
+mytopcontacts.delete_conatact('+7555555555')
+mytopcontacts.show_contacts()
